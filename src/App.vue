@@ -6,18 +6,26 @@
       <img src="../public/img/61e6cb77422df04ad519a4910729243ba0c27bd868f7c24d7eea8fa68f084e4b_1.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
       Estacionamento do cabra
     </a>
-    <div class="nav-item">
+    <div class="nav-item d-flex ">
     
       <router-link to="/">
-        <a class="btn btn-primary ml-3 " href="#" role="button">Movimentar</a>
+        <a class="btn btn-primary " href="#" role="button">Movimentar</a>
       </router-link>
     
-      <router-link to="/about">
+      <router-link to="/Veiculo">
         <a class="btn btn-primary " href="#" role="button">Veiculo</a>
       </router-link>
 
       <router-link to="/marca">
         <a class="btn btn-primary" href="#" role="button">Marca</a>
+      </router-link>
+
+      <router-link to="/condutor">
+        <a class="btn btn-primary" href="#" role="button">Condutor</a>
+      </router-link>
+      
+      <router-link to="/modelo">
+        <a class="btn btn-primary" href="#" role="button">Modelo</a>
       </router-link>
     </div>
   </div>
