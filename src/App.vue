@@ -1,36 +1,48 @@
 <template>
-  <nav>
-    <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="../public/img/61e6cb77422df04ad519a4910729243ba0c27bd868f7c24d7eea8fa68f084e4b_1.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      Estacionamento do cabra
-    </a>
-    <div class="nav-item d-flex ">
-    
-      <router-link to="/">
-        <a class="btn btn-primary " href="#" role="button">Movimentar</a>
-      </router-link>
-    
-      <router-link to="/Veiculo">
-        <a class="btn btn-primary " href="#" role="button">Veiculo</a>
-      </router-link>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-gradient" style="background-color: #007bff;">
+  <a class="navbar-brand" href="#">Chucky jonson's Park</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
 
-      <router-link to="/marca">
-        <a class="btn btn-primary" href="#" role="button">Marca</a>
-      </router-link>
+      <li class="nav-item active">
+        <router-link to="/veiculo">
+          <a class="nav-link" href="#">Veiculo</a>
+       </router-link>
+      </li>
 
-      <router-link to="/condutor">
-        <a class="btn btn-primary" href="#" role="button">Condutor</a>
+      <li class="nav-item">
+        <router-link to="/marca">
+          <a class="nav-link" href="#">Marca</a>
+        </router-link>
+      </li>
+    
+      <li class="nav-item">
+        <router-link to="/modelo">
+          <a class="nav-link" href="#">Modelo</a>
+        </router-link>
+      </li>
+
+
+      <li class="nav-item">
+        <router-link to="/condutor">
+        <a class="nav-link" href="#">Condutor</a>
       </router-link>
-      
-      <router-link to="/modelo">
-        <a class="btn btn-primary" href="#" role="button">Modelo</a>
-      </router-link>
-    </div>
+      </li>
+
+      <li class="nav-item">
+        <router-link to="/">
+          <a class="nav-link fw-bold" href="#">Estacionar</a>
+        </router-link>
+      </li>
+    </ul>
+
+
   </div>
+  <div class="bg-secondary"></div>
 </nav>
-  </nav>
   <router-view/>
 </template>
 
@@ -41,16 +53,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  width: auto;
+  height: auto;
 }
 
-nav {
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+
 </style>

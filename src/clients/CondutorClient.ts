@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Condutor } from "../models/Condutor";
+import { Condutor } from "../assets/models/Condutor";
 
-export class CondutorClient {
+ class CondutorClient {
 
     private axiosClient : AxiosInstance;
 
@@ -23,7 +23,7 @@ export class CondutorClient {
 
     public async listAll() : Promise<Condutor[]> {
         try {
-            return (await this.axiosClient.get<Condutor[]>(`/lista`)).data
+            return (await this.axiosClient.get<Condutor[]>(`/listar`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -31,7 +31,7 @@ export class CondutorClient {
 
     public async findByAtivo() : Promise<Condutor[]> {
         try {
-            return (await this.axiosClient.get<Condutor[]>(`/ativo`)).data
+            return (await this.axiosClient.get<Condutor[]>(`/listarPorAtivo`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -39,13 +39,27 @@ export class CondutorClient {
 
     public async cadastrar(condutor : Condutor) : Promise<void> {
         try {
-            return (await this.axiosClient.post('/', condutor))
+            return (await this.axiosClient.post('/cadastrar', condutor))
         } catch (error : any) {
             return Promise.reject(error.response)
         }
 
     }
+    public async editar( id: number, condutor : Condutor) : Promise<string> {
+        try {
+            return (await this.axiosClient.put<string>(`/editar/${id}`, condutor)).data
+        } catch (error : any) {
+            return Promise.reject(error.response)
+        }
+    }
 
-
+    public async deletar(id: number) : Promise<string> {
+        try {
+            return (await this.axiosClient.delete<string>(`/${id}`)).data
+        } catch (error : any) {
+            return Promise.reject(error.response)
+        }
+    }
 
 }
+export default new CondutorClient();

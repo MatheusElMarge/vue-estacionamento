@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Marca } from "../models/Marca";
+import { Marca } from "../assets/models/Marca";
 
 
 export class MarcaClient {

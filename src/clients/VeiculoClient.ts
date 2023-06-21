@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
-import { Veiculo } from "../models/Veiculo";
-import { Movimentacao } from "../models/Movimentacao";
+import { Veiculo } from "../assets/models/Veiculo";
+import { Movimentacao } from "../assets/models/Movimentacao";
 
 export class VeiculoClient {
 

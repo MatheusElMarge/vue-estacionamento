@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Configuracao } from "../models/Configuracao";
+import { Configuracao } from "../assets/models/Configuracao";
 
 export class ConfiguracaoClient {
     

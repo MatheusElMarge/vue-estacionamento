@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Modelo } from "../models/Modelo";
+import { Modelo } from "../assets/models/Modelo";
 
 export class ModeloClient { 
 
