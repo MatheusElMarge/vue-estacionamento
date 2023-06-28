@@ -3,8 +3,8 @@ import { Condutor } from "./Condutor";
 import { Veiculo } from "./Veiculo";
 
 export class Movimentacao extends AbstractEntity {
-    veiculoId! : Veiculo
-    condutorId! : Condutor
+    veiculo! : Veiculo
+    condutor! : Condutor
     entrada! : Date
     saida! : Date
     tempo! : number

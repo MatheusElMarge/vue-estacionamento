@@ -55,7 +55,7 @@ import { Condutor } from "../assets/models/Condutor";
 
     public async deletar(id: number) : Promise<string> {
         try {
-            return (await this.axiosClient.delete<string>(`/${id}`)).data
+            return (await this.axiosClient.delete<string>(`/deletar/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }

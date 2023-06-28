@@ -33,12 +33,21 @@
       </li>
 
       <li class="nav-item">
-        <router-link to="/">
+        <router-link to="/movimentacao">
           <a class="nav-link fw-bold" href="#">Estacionar</a>
         </router-link>
       </li>
+
+
+      <li class="nav-item">
+      <router-link to="/configuracao">
+        <a class="nav-link" href="#">configuracao</a>
+      </router-link>
+    </li>
+
     </ul>
 
+    
 
   </div>
   <div class="bg-secondary"></div>

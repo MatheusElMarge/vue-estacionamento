@@ -1,9 +1,7 @@
 import axios, { AxiosInstance } from "axios";
-
 import { Marca } from "../assets/models/Marca";
 
-
-export class MarcaClient {
+class MarcaClient {
     
     private axiosClient : AxiosInstance
 
@@ -24,7 +22,7 @@ export class MarcaClient {
 
     public async listAll() : Promise<Marca[]> {
         try {
-            return (await this.axiosClient.get<Marca[]>(`/lista`)).data
+            return (await this.axiosClient.get<Marca[]>(`/listar`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -38,28 +36,29 @@ export class MarcaClient {
         }
     }
 
-    public async cadastrar(marca : Marca) : Promise<void> {
+    public async cadastrar(marca : Marca) : Promise<string> {
         try {
-            return (await this.axiosClient.post('/', marca))
+            return (await this.axiosClient.post<string>('/cadastrar', marca)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(marca : Marca) : Promise<void> {
+    public async editar(id: number, marca : Marca) : Promise<String> {
         try {
-            return (await this.axiosClient.post(`/${marca.id}`, marca)).data
+            return (await this.axiosClient.put<string>(`/editar/${id}`, marca)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async deletar(marca : Marca) : Promise<string> {
+    public async deletar(id: number ) : Promise<string> {
         try {
-            return (await this.axiosClient.delete(`/${marca.id}`)).data
+            return (await this.axiosClient.delete(`/deletar/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
 }
+export default new MarcaClient();

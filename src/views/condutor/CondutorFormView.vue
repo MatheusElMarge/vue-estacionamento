@@ -23,7 +23,7 @@
       <div class="col-auto">
         <label for="exampleFormControlInput1">numero</label>
         <input  :disabled="this.form === 'excluir' ? '' :disabled"
-            v-model="condutor.telefone" type="text" class="form-control form-control-sm " id="exampleFormControlInput1" placeholder="telefone">
+            v-model="condutor.telefone" type="text" class="form-control form-control-sm " id="exampleFormControlInput1" placeholder="+XX(DDD)XXXXX-XXXX">
       </div>
 
       <div class="col-auto">
@@ -33,13 +33,15 @@
           placeholder="digite aqui o cpf">
       </div>
 
-      <div>
-
+      <div class="">
 
         <button v-if="this.form === undefined" @click="cadastrar()" class="btn btn-primary mt-3">Cadastrar</button>
-        <button v-if="this.form === 'editar'" @click="editar()" class=" btn-primary mt-3">Editar</button>
-        <button v-if="this.form === 'excluir'" @click="deletar()" class=" btn-primary mt-3">Excluir</button>
+        <button v-if="this.form === 'editar'" @click="editar()" class="btn btn-primary mt-3">Editar</button>
+        <button v-if="this.form === 'excluir'" @click="deletar()" class=" btn btn-primary mt-3">Excluir</button>
 
+        <RouterLink to="/condutor">
+        <button class="btn btn-primary bg-danger mt-3 ms-2" > Voltar </button>
+      </RouterLink>
       </div>
     </div>
   </div>
@@ -53,6 +55,7 @@ import { Condutor } from "@/assets/models/Condutor";
 export default defineComponent({
   name: "condutorForm",
   data() {
+    
     return {
       condutor: new Condutor(),
       message: {
@@ -67,49 +70,49 @@ export default defineComponent({
   methods: {
     findbyId(id: number) {
       CondutorClient.findById(id)
-        .then((success) => {
+        .then(success => {
           this.condutor = success;
           this.message.ativo = true;
           this.message.titulo = "success";
           this.message.message = "success";
           this.message.css = "alert alert-success alert-dismissible fade show";
         })
-        .catch((error) => {
+        .catch(error => {
           this.message.ativo = true;
           this.message.titulo = "error";
-          this.message.message = error;
+          this.message.message = error.data;
           this.message.css = "alert alert-danger alert-dismissible fade show";
         });
     },
     cadastrar() {
       CondutorClient.cadastrar(this.condutor)
-        .then((success) => {
+        .then(success => {
           this.condutor = new Condutor();
           this.message.ativo = true;
           this.message.titulo = "success";
           this.message.message = "success";
           this.message.css = "alert alert-success alert-dismissible fade show";
         })
-        .catch((error) => {
+        .catch(error => {
           this.message.ativo = true;
           this.message.titulo = "error";
-          this.message.message = error;
+          this.message.message = error.data;
           this.message.css = "alert alert-danger alert-dismissible fade show";
         });
     },
     editar() {
       CondutorClient.editar(this.condutor.id, this.condutor)
-        .then((success) => {
+        .then(success => {
           this.condutor = new Condutor();
           this.message.ativo = true;
           this.message.titulo = "success";
-          this.message.message = "success";
+          this.message.message = success;
           this.message.css = "alert alert-success alert-dismissible fade show";
         })
-        .catch((error) => {
+        .catch(error => {
           this.message.ativo = true;
           this.message.titulo = "error";
-          this.message.message = error;
+          this.message.message = error.data;
           this.message.css = "alert alert-danger alert-dismissible fade show";
         });
     },
@@ -123,7 +126,7 @@ export default defineComponent({
         .catch(error => {
           this.message.ativo = true;
           this.message.titulo = "error";
-          this.message.message = error;
+          this.message.message = error.data;
           this.message.css = "alert alert-danger alert-dismissible fade show";
         });
     },

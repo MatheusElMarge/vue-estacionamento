@@ -3,7 +3,7 @@ import { Marca } from "./Marca";
 
 export class Modelo extends AbstractEntity {
     nome! : string
-    marcaId! : Marca
+    marca! : Marca
 
     constructor(){
         super()

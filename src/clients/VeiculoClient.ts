@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { Veiculo } from "../assets/models/Veiculo";
 import { Movimentacao } from "../assets/models/Movimentacao";
 
-export class VeiculoClient {
+class VeiculoClient {
 
     private axiosClient : AxiosInstance;
 
@@ -23,7 +23,7 @@ export class VeiculoClient {
 
     public async listAll() : Promise<Veiculo[]> {
         try { 
-            return (await this.axiosClient.get<Veiculo[]>(`/lista`)).data
+            return (await this.axiosClient.get<Veiculo[]>(`/listar`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -37,28 +37,29 @@ export class VeiculoClient {
         }
     }
 
-    public async cadastrar(veiculo : Veiculo) : Promise<void> {
+    public async cadastrar(veiculo : Veiculo) : Promise<string> {
         try {
-            return (await this.axiosClient.post('/', veiculo))
+            return (await this.axiosClient.post<string>('/cadastrar', veiculo)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(veiculo : Veiculo) : Promise<void> {
+    public async editar(id:number, veiculo : Veiculo) : Promise<string> {
         try {
-            return (await this.axiosClient.put(`/${veiculo.id}`, veiculo)).data
+            return (await this.axiosClient.put<string>(`/editar/${id}`, veiculo)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async deletar(veiculo : Veiculo) : Promise<string> {
+    public async deletar(id:number) : Promise<string> {
         try {
-            return (await this.axiosClient.delete(`/${veiculo.id}`)).data
+            return (await this.axiosClient.delete<string>(`/deletar/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
 }
+export default new VeiculoClient();

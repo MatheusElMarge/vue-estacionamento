@@ -1,8 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
 import { Modelo } from "../assets/models/Modelo";
-
-export class ModeloClient { 
+ class ModeloClient { 
 
     private axiosClient : AxiosInstance;
 
@@ -23,7 +22,7 @@ export class ModeloClient {
 
     public async listAll() : Promise<Modelo[]> {
         try {
-            return (await this.axiosClient.get<Modelo[]>(`/lista`)).data
+            return (await this.axiosClient.get<Modelo[]>(`/listar`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -37,20 +36,28 @@ export class ModeloClient {
         }
     }
 
-    public async cadastrar(modelo : Modelo) : Promise<void> {
+    public async cadastrar(modelo : Modelo) : Promise<string> {
         try {
-            return (await this.axiosClient.post('/', modelo))
+            return (await this.axiosClient.post<string>('/cadastrar', modelo)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(modelo : Modelo) : Promise<void> {
+    public async editar(id:number, modelo : Modelo) : Promise<string> {
         try {
-            return (await this.axiosClient.put(`/${modelo.id}`, modelo)).data
+            return (await this.axiosClient.put<string>(`/editar/${id}`, modelo)).data
+        } catch (error : any) {
+            return Promise.reject(error.response)
+        }
+    }
+    public async deletar(id: number ) : Promise<string> {
+        try {
+            return (await this.axiosClient.delete<string>(`/deletar/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
 }
+export default new ModeloClient();
